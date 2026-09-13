@@ -228,7 +228,7 @@ CREATE TABLE apps (
 	is_new BOOLEAN, 
 	is_demo BOOLEAN, 
 	created_at TIMESTAMP WITH TIME ZONE, 
-	updated_at TIMESTAMP WITH TIME ZONE, downloads_count INTEGER DEFAULT 50000, downloads_growth VARCHAR(50) DEFAULT '+18.5% ce mois', downloads_growth_weekly INTEGER DEFAULT 4500, subscription_price VARCHAR(100) DEFAULT '4,99 €/mois', company_name VARCHAR(255), company_country VARCHAR(50) DEFAULT 'US', company_type VARCHAR(100) DEFAULT 'Studio Indépendant', release_date VARCHAR(20), functional_summary TEXT, 
+	updated_at TIMESTAMP WITH TIME ZONE, store_url VARCHAR(500), downloads_count INTEGER DEFAULT 50000, downloads_growth VARCHAR(50) DEFAULT '+18.5% ce mois', downloads_growth_weekly INTEGER DEFAULT 4500, subscription_price VARCHAR(100) DEFAULT '4,99 €/mois', company_name VARCHAR(255), company_country VARCHAR(50) DEFAULT 'US', company_type VARCHAR(100) DEFAULT 'Studio Indépendant', release_date VARCHAR(20), functional_summary TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(platform) REFERENCES platforms (id), 
 	FOREIGN KEY(country) REFERENCES countries (code)
