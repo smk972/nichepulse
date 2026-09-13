@@ -33,6 +33,7 @@ interface NewLaunchApp {
   company_country: string;
   company_type: string;
   release_date: string;
+  store_url?: string;
   functional_summary: string;
   description: string;
   features: Feature[];
@@ -326,7 +327,20 @@ export default function NewLaunchesPage() {
                   </div>
 
                   {/* Right Actions */}
-                  <div className="flex items-center gap-2.5 shrink-0 self-end lg:self-auto">
+                  <div className="flex items-center gap-2.5 shrink-0 self-end lg:self-auto flex-wrap">
+                    {app.store_url && (
+                      <a
+                        href={app.store_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-3 py-1.5 rounded-xl bg-[#0d1117] hover:bg-[#161b26] text-[11.5px] font-telemetry font-bold text-[#34d399] border border-[#1e2536] hover:border-[#10b981]/50 transition-all flex items-center gap-1.5 cursor-pointer shadow-sm"
+                        title="Ouvrir la fiche officielle sur le store"
+                      >
+                        <span>{app.platform === "ios" ? "🍎 Fiche App Store" : "🤖 Fiche Google Play"}</span>
+                        <span className="material-symbols-outlined text-[13px]">open_in_new</span>
+                      </a>
+                    )}
+
                     <button
                       onClick={() => toggleExpand(app.id)}
                       className="px-3 py-1.5 rounded-xl bg-[#0d1117] hover:bg-[#161b26] text-[11.5px] font-telemetry font-bold text-[#38bdf8] border border-[#1e2536] hover:border-[#06b6d4]/40 transition-all flex items-center gap-1.5 cursor-pointer"

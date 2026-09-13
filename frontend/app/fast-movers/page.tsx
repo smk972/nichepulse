@@ -182,7 +182,22 @@ export default function FastMoversPage() {
                 </div>
 
                 <div className="flex items-center justify-between pt-2.5 border-t border-[#1e2536] text-[11px] text-[#64748b] font-telemetry">
-                  <span>Rang actuel : <strong className="text-white">#{app.current_rank}</strong></span>
+                  <div className="flex items-center gap-2">
+                    <span>Rang : <strong className="text-white">#{app.current_rank}</strong></span>
+                    {app.store_url && (
+                      <a
+                        href={app.store_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="px-2 py-0.5 rounded bg-[#161b26] hover:bg-[#1f2636] text-[#34d399] hover:text-white border border-[#2a344d] flex items-center gap-1 text-[10px] font-bold transition-colors"
+                        title="Ouvrir la fiche officielle sur le store"
+                      >
+                        <span>{app.platform === "ios" ? "🍎 Store" : "🤖 Play"}</span>
+                        <span className="material-symbols-outlined text-[11px]">open_in_new</span>
+                      </a>
+                    )}
+                  </div>
                   <span className="text-[#38bdf8] font-semibold group-hover:underline flex items-center gap-1">
                     Inspecter <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
                   </span>

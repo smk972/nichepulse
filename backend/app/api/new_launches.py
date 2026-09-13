@@ -81,6 +81,7 @@ def list_new_launches(
             "company_country": app.company_country,
             "company_type": app.company_type,
             "release_date": app.release_date,
+            "store_url": app.store_url,
             "is_breakout": app.is_breakout,
             "is_new": app.is_new,
             "features": [

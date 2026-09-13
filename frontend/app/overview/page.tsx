@@ -414,9 +414,25 @@ export default function OverviewPage() {
                       <span className="font-telemetry text-[9px] px-1.5 py-0.2 rounded bg-[#7c3aed]/20 text-[#d0bcff] font-bold border border-[#7c3aed]/30">
                         {item.category}
                       </span>
-                      <span className="font-telemetry text-[9px] px-1.5 py-0.2 rounded bg-[#06b6d4]/15 text-[#38bdf8] font-bold uppercase border border-[#06b6d4]/25">
-                        {item.platform === "ios" ? "🍎 iOS" : "🤖 Android"}
-                      </span>
+                      {item.store_url ? (
+                        <a
+                          href={item.store_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="hover:opacity-80 transition-opacity inline-flex"
+                          title="Ouvrir la fiche officielle sur le store"
+                        >
+                          <span className="font-telemetry text-[9px] px-1.5 py-0.2 rounded bg-[#06b6d4]/15 text-[#38bdf8] font-bold uppercase border border-[#06b6d4]/25 flex items-center gap-1">
+                            {item.platform === "ios" ? "🍎 iOS" : "🤖 Android"}
+                            <span className="material-symbols-outlined text-[10px]">open_in_new</span>
+                          </span>
+                        </a>
+                      ) : (
+                        <span className="font-telemetry text-[9px] px-1.5 py-0.2 rounded bg-[#06b6d4]/15 text-[#38bdf8] font-bold uppercase border border-[#06b6d4]/25">
+                          {item.platform === "ios" ? "🍎 iOS" : "🤖 Android"}
+                        </span>
+                      )}
                     </div>
                     <div className="flex items-center gap-2 mt-0.5 flex-wrap">
                       <span className="font-telemetry text-[11px] text-[#38bdf8] flex items-center gap-1">

@@ -241,15 +241,36 @@ export default function AppExplorerPage() {
                     </td>
 
                     <td className="py-4 px-4 font-telemetry text-[11px]">
-                      <div className="flex items-center gap-1.5">
-                        {app.platform === "ios" ? (
-                          <span className="px-2 py-0.5 rounded-md bg-[#7c3aed]/20 text-[#d0bcff] font-bold text-[10.5px] border border-[#7c3aed]/30">
-                            🍎 iOS
-                          </span>
+                      <div className="flex items-center gap-1.5 flex-wrap">
+                        {app.store_url ? (
+                          <a
+                            href={app.store_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="inline-flex items-center gap-1 group/store hover:opacity-90 transition-opacity"
+                            title="Ouvrir la fiche officielle sur le store (nouvel onglet)"
+                          >
+                            {app.platform === "ios" ? (
+                              <span className="px-2 py-0.5 rounded-md bg-[#7c3aed]/20 text-[#d0bcff] font-bold text-[10.5px] border border-[#7c3aed]/30 flex items-center gap-1 group-hover/store:border-[#7c3aed]">
+                                🍎 iOS <span className="material-symbols-outlined text-[11px]">open_in_new</span>
+                              </span>
+                            ) : (
+                              <span className="px-2 py-0.5 rounded-md bg-[#06b6d4]/15 text-[#38bdf8] font-bold text-[10.5px] border border-[#06b6d4]/30 flex items-center gap-1 group-hover/store:border-[#06b6d4]">
+                                🤖 Android <span className="material-symbols-outlined text-[11px]">open_in_new</span>
+                              </span>
+                            )}
+                          </a>
                         ) : (
-                          <span className="px-2 py-0.5 rounded-md bg-[#06b6d4]/15 text-[#38bdf8] font-bold text-[10.5px] border border-[#06b6d4]/30">
-                            🤖 Android
-                          </span>
+                          app.platform === "ios" ? (
+                            <span className="px-2 py-0.5 rounded-md bg-[#7c3aed]/20 text-[#d0bcff] font-bold text-[10.5px] border border-[#7c3aed]/30">
+                              🍎 iOS
+                            </span>
+                          ) : (
+                            <span className="px-2 py-0.5 rounded-md bg-[#06b6d4]/15 text-[#38bdf8] font-bold text-[10.5px] border border-[#06b6d4]/30">
+                              🤖 Android
+                            </span>
+                          )
                         )}
                         <span className="text-[#64748b] text-[10px]">{app.country}</span>
                       </div>

@@ -64,12 +64,27 @@ export default function AppDetailDrawer({ appId, onClose }: AppDetailDrawerProps
               </div>
             </div>
 
-            <button
-              onClick={onClose}
-              className="p-2 rounded-xl bg-[#0d1117] hover:bg-[#161b26] text-[#64748b] hover:text-white transition-colors border border-[#1e2536] cursor-pointer"
-            >
-              <span className="material-symbols-outlined text-[19px]">close</span>
-            </button>
+            <div className="flex items-center gap-2.5">
+              {app?.store_url && (
+                <a
+                  href={app.store_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1.5 rounded-xl bg-[#10b981]/15 hover:bg-[#10b981]/25 text-[#34d399] border border-[#10b981]/30 font-telemetry text-[11px] font-bold flex items-center gap-1.5 transition-colors shadow-sm"
+                  title="Ouvrir la fiche officielle sur le store"
+                >
+                  <span>{app.platform === "ios" ? "🍎 App Store" : "🤖 Google Play"}</span>
+                  <span className="material-symbols-outlined text-[13px]">open_in_new</span>
+                </a>
+              )}
+
+              <button
+                onClick={onClose}
+                className="p-2 rounded-xl bg-[#0d1117] hover:bg-[#161b26] text-[#64748b] hover:text-white transition-colors border border-[#1e2536] cursor-pointer"
+              >
+                <span className="material-symbols-outlined text-[19px]">close</span>
+              </button>
+            </div>
           </div>
 
           {/* Drawer Body Scrollable */}
@@ -206,6 +221,20 @@ export default function AppDetailDrawer({ appId, onClose }: AppDetailDrawerProps
                         {app.id}
                       </code>
                     </span>
+                    {app.store_url && (
+                      <>
+                        <span>•</span>
+                        <a
+                          href={app.store_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[#34d399] hover:underline font-bold flex items-center gap-1"
+                        >
+                          <span>Fiche officielle</span>
+                          <span className="material-symbols-outlined text-[12px]">open_in_new</span>
+                        </a>
+                      </>
+                    )}
                   </div>
                 </div>
 

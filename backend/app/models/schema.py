@@ -60,6 +60,7 @@ class App(Base):
     company_type = Column(String(100), default="Studio Indépendant")
     release_date = Column(String(20), nullable=True)
     functional_summary = Column(Text, nullable=True)
+    store_url = Column(String(500), nullable=True)
     created_at = Column(DateTime, default=utc_now)
     updated_at = Column(DateTime, default=utc_now, onupdate=utc_now)
 
