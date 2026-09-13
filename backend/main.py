@@ -46,6 +46,16 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+from app.core.scheduler import start_scheduler, stop_scheduler
+
+@app.on_event("startup")
+def on_startup():
+    start_scheduler()
+
+@app.on_event("shutdown")
+def on_shutdown():
+    stop_scheduler()
+
 # Enregistrement des routes avec préfixe API v1
 api_v1 = settings.API_V1_STR
 app.include_router(overview_router, prefix=api_v1)
